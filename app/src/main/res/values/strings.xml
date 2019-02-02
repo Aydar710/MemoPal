@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MemoPal</string>
+    <integer name="com_vk_sdk_AppId">6835570</integer>
+    <string name="vk_api_version">5.92</string>
+    <string name="access_token">bdf4d31c920e3077620f45c5e111ca1fe176b577ac84e099a5595032bbf0836f3b1aaf42051a7a789861b</string>
+
+</resources>
