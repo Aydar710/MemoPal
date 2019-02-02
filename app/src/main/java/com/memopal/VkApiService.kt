@@ -21,13 +21,15 @@ interface VkApiService {
     @GET("wall.get")
     fun getGroupPosts(
             @Query("owner_id") ownerId: String,
-            @Query("count") count: String
+            @Query("count") count: String,
+            @Query("access_token") access_token : String
     ): Observable<WallPostResponse>
 
     @GET("users.get")
     fun getUser(
             @Query("user_ids") userId: String,
-            @Query("fields") fields: String
+            @Query("fields") fields: String,
+            @Query("access_token") access_token : String
     ): Observable<UserInfoResponse>
 
     @GET("utils.resolveScreenName")
@@ -37,7 +39,8 @@ interface VkApiService {
 
     @GET("groups.search")
     fun getGroups(
-            @Query("q") queryText : String?
+            @Query("q") queryText : String?,
+            @Query("access_token") access_token : String
 //            @Query("type") type : String = "group"
     ) : Single<GroupsResponse>
 
@@ -53,7 +56,7 @@ interface VkApiService {
                 val context = Application.context
                 val url = request.url().newBuilder()
                         .addQueryParameter("v", "5.92")
-                        .addQueryParameter("access_token", context.getString(R.string.access_token))
+                        //.addQueryParameter("access_token", context.getString(R.string.access_token))
                         .build()
                 request = request.newBuilder().url(url).build()
                 chain.proceed(request)

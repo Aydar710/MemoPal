@@ -1,25 +1,26 @@
 package com.memopal.activity
 
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
-import android.widget.Toast
 import com.memopal.GroupsAdapter
 import com.memopal.R
 import com.memopal.ResponseRepository
 import com.memopal.VkApiService
+import com.memopal.constants.SHARED_PREF_FILENAME
+import com.memopal.constants.SHARED_PREF_KEY
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_groups.*
+
 
 class GroupsActivity : AppCompatActivity() {
 
     lateinit var repository: ResponseRepository
     lateinit var adapter: GroupsAdapter
+    private lateinit var sPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +54,9 @@ class GroupsActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
+                val token = getTokenFromPreferences()
                 if (query?.length == 0) return true
-                repository.getGroups(query)
+                repository.getGroups(query, token)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 {
@@ -70,5 +72,11 @@ class GroupsActivity : AppCompatActivity() {
         })
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    fun getTokenFromPreferences(): String {
+        sPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE)
+        val token = sPref.getString(SHARED_PREF_KEY, "")
+        return token
     }
 }
