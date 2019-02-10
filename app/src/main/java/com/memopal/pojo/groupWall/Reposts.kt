@@ -1,4 +1,4 @@
-package com.memopal.pojo.wall
+package com.memopal.pojo.groupWall
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

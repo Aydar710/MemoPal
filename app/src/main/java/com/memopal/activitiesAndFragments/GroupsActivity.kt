@@ -1,4 +1,4 @@
-package com.memopal.activity
+package com.memopal.activitiesAndFragments
 
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
@@ -11,7 +11,7 @@ import com.memopal.R
 import com.memopal.ResponseRepository
 import com.memopal.VkApiService
 import com.memopal.constants.SHARED_PREF_FILENAME
-import com.memopal.constants.SHARED_PREF_KEY
+import com.memopal.constants.SHARED_PREF_TOKEN_KEY
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_groups.*
 
@@ -31,9 +31,9 @@ class GroupsActivity : AppCompatActivity() {
         repository = ResponseRepository(VkApiService.create())
 
         var recyclerView = recycler_groups
-        adapter = GroupsAdapter()
+        /*adapter = GroupsAdapter()
 
-        recyclerView.adapter = adapter
+        recyclerView.adapter = adapter*/
 
     }
 
@@ -76,7 +76,7 @@ class GroupsActivity : AppCompatActivity() {
 
     fun getTokenFromPreferences(): String {
         sPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE)
-        val token = sPref.getString(SHARED_PREF_KEY, "")
+        val token = sPref.getString(SHARED_PREF_TOKEN_KEY, "")
         return token
     }
 }

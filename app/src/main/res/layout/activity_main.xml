@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activitiesAndFragments.MainActivity">
 
-    <Button
+    <!--<Button
         android:id="@+id/btn_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,6 +34,25 @@
         android:layout_marginStart="16dp"
         android:text="Groups"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btn_request_user" />
+        app:layout_constraintStart_toStartOf="@+id/btn_request_user" />-->
 
+    <Button
+        android:id="@+id/btn_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="235dp"
+        android:text="Begin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_groups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:layout_marginEnd="8dp"
+        android:text="Groups"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_begin" />
 </android.support.constraint.ConstraintLayout>

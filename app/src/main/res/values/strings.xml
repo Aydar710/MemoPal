@@ -4,4 +4,7 @@
     <string name="vk_api_version">5.92</string>
     <string name="access_token">bdf4d31c920e3077620f45c5e111ca1fe176b577ac84e099a5595032bbf0836f3b1aaf42051a7a789861b</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

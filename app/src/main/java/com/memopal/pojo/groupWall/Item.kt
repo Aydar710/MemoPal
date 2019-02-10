@@ -1,48 +1,51 @@
-package com.memopal.pojo.wall
+package com.memopal.pojo.groupWall
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class Item (
 
-        @SerializedName("id")
+    @SerializedName("id")
     @Expose
     var id: Int? = null,
-        @SerializedName("from_id")
+    @SerializedName("from_id")
     @Expose
     var fromId: Int? = null,
-        @SerializedName("owner_id")
+    @SerializedName("owner_id")
     @Expose
     var ownerId: Int? = null,
-        @SerializedName("date")
+    @SerializedName("date")
     @Expose
     var date: Int? = null,
-        @SerializedName("marked_as_ads")
+    @SerializedName("marked_as_ads")
     @Expose
     var markedAsAds: Int? = null,
-        @SerializedName("post_type")
+    @SerializedName("post_type")
     @Expose
     var postType: String? = null,
-        @SerializedName("text")
+    @SerializedName("text")
     @Expose
     var text: String? = null,
-        @SerializedName("post_source")
+    @SerializedName("can_pin")
+    @Expose
+    var canPin: Int? = null,
+    @SerializedName("attachments")
+    @Expose
+    var attachments: List<Attachment>? = null,
+    @SerializedName("post_source")
     @Expose
     var postSource: PostSource? = null,
-        @SerializedName("comments")
+    @SerializedName("comments")
     @Expose
     var comments: Comments? = null,
-        @SerializedName("likes")
+    @SerializedName("likes")
     @Expose
     var likes: Likes? = null,
-        @SerializedName("reposts")
+    @SerializedName("reposts")
     @Expose
     var reposts: Reposts? = null,
-        @SerializedName("views")
+    @SerializedName("views")
     @Expose
-    var views: Views? = null,
-        @SerializedName("is_favorite")
-    @Expose
-    var isFavorite: Boolean? = null
+    var views: Views? = null
 
 )

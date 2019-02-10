@@ -1,11 +1,10 @@
 package com.memopal
 
-import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.memopal.pojo.TypeAndId.TypeAndIdResponse
 import com.memopal.pojo.groups.GroupsResponse
+import com.memopal.pojo.groupWall.GroupWallResponse
 import com.memopal.pojo.user.UserInfoResponse
-import com.memopal.pojo.wall.WallPostResponse
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.Interceptor
@@ -23,7 +22,14 @@ interface VkApiService {
             @Query("owner_id") ownerId: String,
             @Query("count") count: String,
             @Query("access_token") access_token : String
-    ): Observable<WallPostResponse>
+    ): Single<GroupWallResponse>
+
+    @GET("wall.get")
+    fun getGroupPosts2(
+            @Query("owner_id") ownerId: String,
+            @Query("count") count: String,
+            @Query("access_token") access_token : String
+    ): Single<com.memopal.pojo.groupWall2.GroupWallResponse>
 
     @GET("users.get")
     fun getUser(
@@ -42,6 +48,14 @@ interface VkApiService {
             @Query("q") queryText : String?,
             @Query("access_token") access_token : String
 //            @Query("type") type : String = "group"
+    ) : Single<GroupsResponse>
+
+    @GET("groups.get")
+    fun getUsersGroups(
+            @Query("user_id") userId : String,
+            @Query("extended") extended : String = "1",
+            @Query("count") count : String = "30",
+            @Query("access_token") token : String
     ) : Single<GroupsResponse>
 
 

@@ -1,4 +1,4 @@
-package com.memopal.pojo.wall
+package com.memopal.pojo.groupWall
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -26,9 +26,6 @@ data class Group (
     @SerializedName("is_member")
     @Expose
     var isMember: Int? = null,
-    @SerializedName("is_advertiser")
-    @Expose
-    var isAdvertiser: Int? = null,
     @SerializedName("photo_50")
     @Expose
     var photo50: String? = null,
@@ -38,5 +35,4 @@ data class Group (
     @SerializedName("photo_200")
     @Expose
     var photo200: String? = null
-
 )

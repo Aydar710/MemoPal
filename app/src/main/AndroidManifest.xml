@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activitiesAndFragments.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,8 @@
             android:label="ServiceActivity"
             android:theme="@style/VK.Transparent" />
         -->
-        <activity android:name=".activity.GroupsActivity"></activity>
+        <activity android:name=".activitiesAndFragments.GroupsActivity" />
+        <activity android:name=".activitiesAndFragments.FragmentContainerActivity"></activity>
     </application>
 
 </manifest>

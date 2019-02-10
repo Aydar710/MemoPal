@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.card_group.*
 import kotlinx.android.synthetic.main.card_group.view.*
 
 
-class GroupsAdapter : ListAdapter<Group, GroupsAdapter.GroupHolder>(GroupItemDiffCallback()) {
+class GroupsAdapter(val listItemClickListener : ListItemClickListener) : ListAdapter<Group, GroupsAdapter.GroupHolder>(GroupItemDiffCallback()) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): GroupHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_group, parent, false)
@@ -27,6 +28,10 @@ class GroupsAdapter : ListAdapter<Group, GroupsAdapter.GroupHolder>(GroupItemDif
         }
     }
 
+    interface ListItemClickListener{
+        fun onClick(group : Group)
+    }
+
 
     inner class GroupHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         var imgGroup = containerView.img_group
@@ -35,9 +40,15 @@ class GroupsAdapter : ListAdapter<Group, GroupsAdapter.GroupHolder>(GroupItemDif
 
         fun bind(group: Group) {
             txt_group_name.text = group.name
+
+            containerView.setOnClickListener {
+                    listItemClickListener.onClick(group)
+            }
             Picasso.get()
                     .load(group.photo100)
                     .into(imgGroup)
+
         }
     }
+
 }

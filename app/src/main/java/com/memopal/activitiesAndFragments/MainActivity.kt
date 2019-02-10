@@ -1,25 +1,22 @@
-package com.memopal.activity
+package com.memopal.activitiesAndFragments
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.content.Intent
 import android.content.SharedPreferences
 import com.facebook.stetho.Stetho
 import com.memopal.R
-import com.memopal.VkApiService
 import com.memopal.constants.SHARED_PREF_FILENAME
-import com.memopal.constants.SHARED_PREF_KEY
+import com.memopal.constants.SHARED_PREF_TOKEN_KEY
 import com.vk.api.sdk.VK
 import com.vk.api.sdk.auth.VKAccessToken
 import com.vk.api.sdk.auth.VKAuthCallback
 import com.vk.api.sdk.auth.VKScope
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
+
 
     private val scope = arrayOf(VKScope.MESSAGES, VKScope.FRIENDS, VKScope.WALL)
     // private var token: String? = null
@@ -30,35 +27,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Старая версия vk api
-        /*VK.login(this,
-                VKScope.NOTIFY,
-                VKScope.FRIENDS,
-                VKScope.PHOTOS,
-                VKScope.AUDIO,
-                VKScope.VIDEO,
-                VKScope.DOCS,
-                VKScope.NOTES,
-                VKScope.PAGES,
-                VKScope.STATUS,
-                VKScope.WALL,
-                VKScope.GROUPS,
-                VKScope.MESSAGES,
-                VKScope.NOTIFICATIONS,
-                VKScope.STATS,
-                VKScope.ADS,
-                VKScope.OFFLINE,
-                VKScope.EMAIL,
-                VKScope.NOHTTPS,
-                VKScope.DIRECT)*/
-        VK.login(this, arrayListOf(VKScope.WALL, VKScope.GROUPS))
-
         Stetho.initializeWithDefaults(this)
 
-        val apiService = VkApiService.create()
+        VK.login(this, arrayListOf(VKScope.WALL, VKScope.GROUPS))
 
 
-        btn_request.setOnClickListener {
+        /*btn_request.setOnClickListener {
            // val token = getString(R.string.access_token)
             val token = getTokenFromPreferences()
             apiService.getGroupPosts("-1", "2", token)
@@ -87,10 +61,16 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        */
         btn_groups.setOnClickListener {
             val intent = Intent(this, GroupsActivity::class.java)
             startActivity(intent)
         }
+
+        btn_begin.setOnClickListener {
+            startContainerActivity()
+        }
+
 
     }
 
@@ -99,7 +79,8 @@ class MainActivity : AppCompatActivity() {
             override fun onLogin(token: VKAccessToken) {
                 // User passed authorization
                 saveTokenToPreferences(token.accessToken)
-                print("a")
+                // startGroupsActivity()
+
             }
 
             override fun onLoginFailed(errorCode: Int) {
@@ -111,16 +92,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+    private fun startGroupsActivity() {
+        val intent = Intent(this, GroupsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startContainerActivity() {
+        val intent = Intent(this, FragmentContainerActivity::class.java)
+        startActivity(intent)
+    }
+
     fun saveTokenToPreferences(token: String) {
         sPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sPref.edit()
-        editor.putString("token", token)
+        editor.putString(SHARED_PREF_TOKEN_KEY, token)
         editor.apply();
     }
 
     fun getTokenFromPreferences(): String {
         sPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE)
-        val token = sPref.getString(SHARED_PREF_KEY, "")
+        val token = sPref.getString(SHARED_PREF_TOKEN_KEY, "")
         return token
     }
+
+    fun doGroupsTransaction() {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction()
+                .add(R.id.frame_container, UserGroupsFragment.newInstance(116812347))
+                .commit()
+    }
+
 }
