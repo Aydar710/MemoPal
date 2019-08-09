@@ -1,4 +1,4 @@
-package com.memopal.activitiesAndFragments
+package com.memopal.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

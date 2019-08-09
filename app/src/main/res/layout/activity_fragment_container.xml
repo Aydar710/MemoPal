@@ -5,6 +5,6 @@
     android:id="@+id/frame_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".activitiesAndFragments.FragmentContainerActivity">
+    tools:context=".ui.FragmentContainerActivity">
 
 </FrameLayout>

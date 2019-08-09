@@ -5,46 +5,31 @@ import com.google.gson.annotations.SerializedName
 
 data class Photo (
 
-    @SerializedName("id")
+        @SerializedName("id")
     @Expose
     var id: Int? = null,
-    @SerializedName("album_id")
+        @SerializedName("album_id")
     @Expose
     var albumId: Int? = null,
-    @SerializedName("owner_id")
+        @SerializedName("owner_id")
     @Expose
     var ownerId: Int? = null,
-    @SerializedName("user_id")
+        @SerializedName("user_id")
     @Expose
     var userId: Int? = null,
-    @SerializedName("photo_75")
+        @SerializedName("sizes")
     @Expose
-    var photo75: String? = null,
-    @SerializedName("photo_130")
-    @Expose
-    var photo130: String? = null,
-    @SerializedName("photo_604")
-    @Expose
-    var photo604: String? = null,
-    @SerializedName("photo_807")
-    @Expose
-    var photo807: String? = null,
-    @SerializedName("photo_1280")
-    @Expose
-    var photo1280: String? = null,
-    @SerializedName("width")
-    @Expose
-    var width: Int? = null,
-    @SerializedName("height")
-    @Expose
-    var height: Int? = null,
-    @SerializedName("text")
+    var sizes: List<Size>? = null,
+        @SerializedName("text")
     @Expose
     var text: String? = null,
-    @SerializedName("date")
+        @SerializedName("date")
     @Expose
     var date: Int? = null,
-    @SerializedName("access_key")
+        @SerializedName("post_id")
+    @Expose
+    var postId: Int? = null,
+        @SerializedName("access_key")
     @Expose
     var accessKey: String? = null
 

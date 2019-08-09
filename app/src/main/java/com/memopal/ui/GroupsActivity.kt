@@ -1,4 +1,4 @@
-package com.memopal.activitiesAndFragments
+package com.memopal.ui
 
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
@@ -71,7 +71,7 @@ class GroupsActivity : AppCompatActivity() {
 
         })
 
-        return super.onCreateOptionsMenu(menu)
+        return super.onCreateOptionsMenu (menu)
     }
 
     fun getTokenFromPreferences(): String {

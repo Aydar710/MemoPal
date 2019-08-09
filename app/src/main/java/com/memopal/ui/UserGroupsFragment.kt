@@ -1,4 +1,4 @@
-package com.memopal.activitiesAndFragments
+package com.memopal.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle

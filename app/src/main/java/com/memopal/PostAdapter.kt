@@ -5,12 +5,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListAdapter
 import com.memopal.pojo.groupWall.Item
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.card_post_item.view.*
 
-class PostAdapter : ListAdapter<Item, PostAdapter.PostHolder>(PostItemDiffCallback()) {
+class PostAdapter : android.widget.ListAdapter<Item, PostAdapter.PostHolder>(PostItemDiffCallback()) {
     lateinit var groupPhotoSource : String
     lateinit var groupName : String
 
@@ -46,11 +47,9 @@ class PostAdapter : ListAdapter<Item, PostAdapter.PostHolder>(PostItemDiffCallba
                     .into(imgGroupPhoto)
 
             Picasso.get()
-                    .load(post.attachments?.get(0)?.photo?.photo75)
+                    .load(post?.attachments?.get(0)?.photo?.sizes?.get(7)?.url)
                     .into(imgPostPhoto)
         }
-
-
 
     }
 

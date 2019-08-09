@@ -3,19 +3,19 @@ package com.memopal.pojo.groupWall
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Response (
+data class Response(
 
-    @SerializedName("count")
-    @Expose
-    var count: Int? = null,
-    @SerializedName("items")
-    @Expose
-    var items: List<Item>? = null,
-    @SerializedName("profiles")
-    @Expose
-    var profiles: List<Any>? = null,
-    @SerializedName("groups")
-    @Expose
-    var groups: List<Group>? = null
+        @SerializedName("count")
+        @Expose
+        var count: Int? = null,
+        @SerializedName("items")
+        @Expose
+        var items: List<Item>? = null,
+        @SerializedName("profiles")
+        @Expose
+        var profiles: List<Any>? = null,
+        @SerializedName("groups")
+        @Expose
+        var groups: List<Group>? = null
 
 )

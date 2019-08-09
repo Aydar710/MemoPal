@@ -1,7 +1,7 @@
 package com.memopal
 
-import com.memopal.pojo.groups.Group
 import com.memopal.pojo.groupWall.Item
+import com.memopal.pojo.groups.Group
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

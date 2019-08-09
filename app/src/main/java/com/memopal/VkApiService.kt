@@ -1,9 +1,9 @@
 package com.memopal
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.memopal.pojo.groupWall.GroupWallResponse
 import com.memopal.pojo.TypeAndId.TypeAndIdResponse
 import com.memopal.pojo.groups.GroupsResponse
-import com.memopal.pojo.groupWall.GroupWallResponse
 import com.memopal.pojo.user.UserInfoResponse
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -24,12 +24,6 @@ interface VkApiService {
             @Query("access_token") access_token : String
     ): Single<GroupWallResponse>
 
-    @GET("wall.get")
-    fun getGroupPosts2(
-            @Query("owner_id") ownerId: String,
-            @Query("count") count: String,
-            @Query("access_token") access_token : String
-    ): Single<com.memopal.pojo.groupWall2.GroupWallResponse>
 
     @GET("users.get")
     fun getUser(
